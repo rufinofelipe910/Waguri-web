@@ -1,13 +1,16 @@
 // ── WAGURI WEB — SLIDER ──
-// Agrega tus imágenes aquí dentro de assets/images/
-// y pon los nombres de archivo en el array de abajo
 
 const SLIDES = [
-  // Reemplaza estas URLs con tus propias imágenes de Waguri
-  // Ejemplo: 'assets/images/waguri1.jpg'
-  'https://i.pinimg.com/originals/6e/0e/a2/6e0ea2aa8e40411de4a57b4d9d4a5a1f.jpg',
-  'https://i.pinimg.com/originals/3e/49/07/3e49072b2a4d05a4bfb1e7e02e4b2b3b.jpg',
-  'https://i.pinimg.com/originals/b7/4e/50/b74e50f2b1d1f2c2b0e3c4d5e6f7a8b9.jpg',
+  'assets/images/SV0S.jpg',
+  'assets/images/f (1).jpg',
+  'assets/images/f (2).jpg',
+  'assets/images/f (3).jpg',
+  'assets/images/f (4).jpg',
+  'assets/images/f (5).jpg',
+  'assets/images/f (6).jpg',
+  'assets/images/f (7).jpg',
+  'assets/images/f (8).jpg',
+  'assets/images/f (9).jpg',
 ]
 
 let currentSlide = 0
@@ -19,14 +22,12 @@ function initSlider() {
 
   if (!sliderEl || SLIDES.length === 0) return
 
-  // Crear slides
   SLIDES.forEach((src, i) => {
     const slide = document.createElement('div')
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '')
     slide.style.backgroundImage = `url('${src}')`
     sliderEl.appendChild(slide)
 
-    // Crear dot
     const dot = document.createElement('button')
     dot.className = 'slider-dot' + (i === 0 ? ' active' : '')
     dot.setAttribute('aria-label', `Slide ${i + 1}`)
@@ -34,7 +35,6 @@ function initSlider() {
     dotsEl.appendChild(dot)
   })
 
-  // Auto-play
   slideInterval = setInterval(nextSlide, 4500)
 }
 
@@ -49,15 +49,13 @@ function goToSlide(index) {
   slides[currentSlide].classList.add('active')
   dots[currentSlide].classList.add('active')
 
-  // Reiniciar timer
   clearInterval(slideInterval)
   slideInterval = setInterval(nextSlide, 4500)
 }
 
 function nextSlide() {
-  const next = (currentSlide + 1) % SLIDES.length
-  goToSlide(next)
+  goToSlide((currentSlide + 1) % SLIDES.length)
 }
 
-// Iniciar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', initSlider)
+    
